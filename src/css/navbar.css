@@ -1,0 +1,62 @@
+@import url('variable.css');
+
+.app .container .navbar {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.app .container .navbar .container {
+    height: 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.app .container .navbar .container .logo img {
+    width: 60px;
+    padding: 4px;  
+}
+
+.app .container .navbar .container .links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+}
+
+.app .container .navbar .container .links a {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    align-items: center; 
+    padding: 0 20px;
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.app .container .navbar .container .links h6 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.app .container .navbar .container .links a:hover {
+    cursor: pointer;
+    background-color: #4b9ab5;
+}
+
+.app .container .navbar .container .logout {
+    font-size: 20px;
+}
+
+.app .container .navbar .container .logout:hover {
+    cursor: pointer;
+}
