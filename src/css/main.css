@@ -1,6 +1,7 @@
 .app {
     height: 100vh;
     display: flex;
+    overflow: auto;
     justify-content: center;
     background-color: #e9f5f5;
 }

@@ -12,7 +12,7 @@
 }
 
 .app .container .navbar .container {
-    height: 70px;
+    height: var(--height-header);
     max-width: 1200px;
     margin: 0 auto;
     display: flex;

@@ -17,21 +17,20 @@ const Layout = () => {
         <>
             <Navbar />
             <Outlet />
-            {/* <Footer /> */}
         </>
     )
 }
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: '/',
+        element: <Layout />,
         children: [
             {
-                path: "/",
-                element: <Home />,
-            }
+                path: '/',
+                element: <Home />
+            },
         ],
-        element: <Layout />,
     },
     {
         path: "/login",

@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { AuthContext } from "../common/context/authContext"
+import Control from '../components/Control'
 
 
 const Home = () => {
@@ -30,7 +31,7 @@ const Home = () => {
         <div>
             {isAuthenticated ?
                 (
-                    <div></div>
+                    <Control />
                 )
                 : ''}
         </div>
