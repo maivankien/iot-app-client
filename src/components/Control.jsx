@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import '../css/control.css';
+import React, { useEffect, useState } from 'react';
 import { IconContext } from 'react-icons';
 import * as Icons from 'react-icons/fa';
 import instance from "../common/api/api"
@@ -24,9 +24,14 @@ const Control = () => {
         fetchData()
     }, [])
 
-    const handleUpdateDevice = async (deviceId, state) => {
+    const handleUpdateDevice = async (deviceId, state, pin) => {
         try {
             await instance.put("/device/update", { deviceId, state })
+            client.publish('home/device', JSON.stringify({
+                pin: pin,
+                deviceId,
+                state: state,
+            }))
         } catch (err) {
             console.log(err)
             showToast("error", MESSAGE_COMMON.ERROR_UPDATE_DEVICE)
@@ -37,12 +42,12 @@ const Control = () => {
         const updatedDevices = await Promise.all(devices.map(async (device) => {
             if (device.id === deviceId) {
                 const state = device.state ? 0 : 1
-                await handleUpdateDevice(deviceId, state)
+                await handleUpdateDevice(deviceId, state, device.pin)
                 return { ...device, state }
             }
             return device
         }))
-    
+
         setDevices(updatedDevices)
     }
 
@@ -52,7 +57,7 @@ const Control = () => {
             <div className="devices">
                 {devices.map((device) => (
                     <div key={device.id} className="device">
-                        <IconContext.Provider value={{className: (device.state ? "active" : "deactive") + " icon"}}>
+                        <IconContext.Provider value={{ className: (device.state ? "active" : "deactive") + " icon" }}>
                             {React.createElement(Icons[device.icon])}
                         </IconContext.Provider>
                         <span>{device.name}</span>

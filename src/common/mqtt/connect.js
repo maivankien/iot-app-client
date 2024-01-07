@@ -16,7 +16,7 @@ client.on('connect', () => {
 })
 
 client.subscribe('mqtt/topic')
-// client.subscribe('mqtt/topic2')
+
 client.on('message', (topic, message) => {
     console.log(`Received message on topic: ${topic}. Message: ${message.toString()}`);
     // if (topic === 'mqtt/topic') {
