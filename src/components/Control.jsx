@@ -26,12 +26,12 @@ const Control = () => {
 
     const handleUpdateDevice = async (deviceId, state, pin) => {
         try {
-            await instance.put("/device/update", { deviceId, state })
             client.publish('home/device', JSON.stringify({
                 pin: pin,
                 deviceId,
                 state: state,
             }))
+            await instance.put("/device/update", { deviceId, state })
         } catch (err) {
             console.log(err)
             showToast("error", MESSAGE_COMMON.ERROR_UPDATE_DEVICE)
@@ -53,7 +53,7 @@ const Control = () => {
 
     return (
         <div className="Control">
-            <h1>Điều khiển các thiết bị</h1>
+            <h1>Điều khiển</h1>
             <div className="devices">
                 {devices.map((device) => (
                     <div key={device.id} className="device">
