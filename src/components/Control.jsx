@@ -57,10 +57,12 @@ const Control = () => {
             <div className="devices">
                 {devices.map((device) => (
                     <div key={device.id} className="device">
-                        <IconContext.Provider value={{ className: (device.state ? "active" : "deactive") + " icon" }}>
-                            {React.createElement(Icons[device.icon])}
-                        </IconContext.Provider>
-                        <span>{device.name}</span>
+                        <div className="device-info">
+                            <IconContext.Provider value={{ className: (device.state ? "active" : "deactive") + " icon" }}>
+                                {React.createElement(Icons[device.icon])}
+                            </IconContext.Provider>
+                            <span>{device.name}</span>
+                        </div>
                         <div className="controls">
                             <button className={device.state ? "active" : "deactive"} onClick={() => toggleDevice(device.id)}>
                                 {device.state ? "Tắt" : "Bật"}

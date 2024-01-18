@@ -1,7 +1,8 @@
-import { useNavigate, useLocation } from 'react-router-dom'
+import Monitor from '../components/Monitor'
+import Control from '../components/Control'
+import { useNavigate, useLocation, useSearchParams  } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { AuthContext } from "../common/context/authContext"
-import Control from '../components/Control'
 
 
 const Home = () => {
@@ -9,8 +10,22 @@ const Home = () => {
     const location = useLocation()
     const { state } = location
     const navigate = useNavigate()
-    const { currentUser, initLogin } = useContext(AuthContext)
+    const { initLogin } = useContext(AuthContext)
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+    const [searchParams] = useSearchParams()
+    const page = searchParams.get('page')
+
+    const renderComponentByPath = (path) => {
+        switch (path) {
+            case '':
+                return <Control />
+            case 'monitor':
+                return <Monitor />
+            default:
+                return <Control />
+        }
+    }
 
     useEffect(() => {
         const checkAuthentication = async () => {
@@ -29,11 +44,7 @@ const Home = () => {
     }, [])
     return (
         <div>
-            {isAuthenticated ?
-                (
-                    <Control />
-                )
-                : ''}
+            {isAuthenticated ? renderComponentByPath(page) : ''}
         </div>
     )
 }

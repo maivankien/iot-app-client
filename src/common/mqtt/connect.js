@@ -15,14 +15,9 @@ client.on('connect', () => {
     console.log('Connected to mqtt')
 })
 
-client.subscribe('mqtt/topic')
+// Subscribe to topic
+client.subscribe('home/data')
+client.subscribe('home/device')
 
-client.on('message', (topic, message) => {
-    console.log(`Received message on topic: ${topic}. Message: ${message.toString()}`);
-    // if (topic === 'mqtt/topic') {
-    // } else {
-    //     console.log(topic)
-    // }
-})
 
 export default client

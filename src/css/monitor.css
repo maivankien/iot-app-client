@@ -1,0 +1,36 @@
+@import url("variable.css");
+
+.Monitor {
+    margin-top: calc(var(--height-header) + 30px);
+}
+
+.monitor-power-linechart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.monitor-power-linechart h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+
+.custom-tooltip {
+    font-size: 15px;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.custom-tooltip .item-tooltip {
+    margin: 4px;
+}
+
+
+.custom-tooltip .item-tooltip .item-tooltip-value {
+    margin: 4px;
+    color: #82ca9d;
+}

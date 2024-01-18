@@ -23,13 +23,13 @@ const Layout = () => {
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: "/",
         element: <Layout />,
         children: [
             {
                 path: '/',
                 element: <Home />
-            },
+            }
         ],
     },
     {

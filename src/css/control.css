@@ -1,7 +1,7 @@
 @import url("variable.css");
 
 :root {
-    --deactive-color: #999;
+    --deactive-color: #333;
     --active-color: #0ede0e;
 }
 
@@ -39,11 +39,16 @@ h1 {
     flex-basis: calc(33.33% - 20px);
 }
 
-.icon.active {
-    color: var(--active-color);
+.device-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
-.icon.deactive {
+
+.icon {
+    font-size: 20px;
     color: var(--deactive-color);
 }
 
