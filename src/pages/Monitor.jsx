@@ -1,8 +1,8 @@
 import "../css/monitor.css"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import client from "../common/mqtt/connect"
 import MQTT_TOPIC from "../common/constants/dict/topic"
-import CustomTooltipPower from "./monitor/customTooltipPower"
+import CustomTooltipPower from "../components/monitor/customTooltipPower"
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 
@@ -23,15 +23,22 @@ const Monitor = () => {
             handleData(JSON.parse(message))
         }
     }
+    
+    useEffect(() => {
+        client.on('message', handleMessage)
+        
+        return () => {
+            client.off('message', handleMessage)
+        }
+    }, [handleData])
 
-    client.on('message', handleMessage)
 
     return (
         <div className="Monitor">
             <div className="monitor-power-linechart">
                 <h3 className="line-chart-title">Biểu đồ giám sát điện năng</h3>
                 <div className="line-chart-container">
-                    <LineChart width={1000} height={300} data={data}>
+                    <LineChart width={1200} height={300} data={data}>
                         <YAxis unit=" W" />
                         <XAxis dataKey="null" />
                         <Line type="monotone" strokeWidth={2} dataKey="power" stroke="#82ca9d" animationType="linear" animationDuration={200} />
@@ -43,4 +50,5 @@ const Monitor = () => {
         </div>
     )
 }
+
 export default Monitor

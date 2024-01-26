@@ -35,7 +35,7 @@ const Navbar = () => {
                             <Link className={`link`} to="?page=monitor">
                                 <h6>Theo dõi</h6>
                             </Link>
-                            <Link className={`link`} to="/report">
+                            <Link className={`link`} to="?page=report">
                                 <h6>Báo cáo</h6>
                             </Link>
                         </div>

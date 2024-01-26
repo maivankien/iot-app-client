@@ -2,9 +2,15 @@ import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const showToast = (type, message, time = 3000) => {
+export const ERROR_CODE = {
+    SUCESS: "success",
+    ERROR: "error",
+    WARNING: "warning"
+}
+
+export const showToast = (type, message, time = 3000) => {
     switch (type) {
-        case 'success':
+        case ERROR_CODE.SUCESS:
             toast.success(message, {
                 position: 'top-right',
                 autoClose: time,
@@ -14,7 +20,7 @@ const showToast = (type, message, time = 3000) => {
                 draggable: true,
             });
             break;
-        case 'error':
+        case ERROR_CODE.ERROR:
             toast.error(message, {
                 position: 'top-right',
                 autoClose: time,
@@ -24,7 +30,7 @@ const showToast = (type, message, time = 3000) => {
                 draggable: true,
             });
             break;
-        case 'warning':
+        case ERROR_CODE.WARNING:
             toast.warn(message, {
                 position: 'top-right',
                 autoClose: time,
@@ -39,8 +45,7 @@ const showToast = (type, message, time = 3000) => {
     }
 };
 
-const Toast = () => {
+export const Toast = () => {
     return <ToastContainer />;
 }
 
-export { showToast, Toast }

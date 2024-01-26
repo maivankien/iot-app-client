@@ -1,4 +1,5 @@
-import Monitor from '../components/Monitor'
+import Report from './Report'
+import Monitor from './Monitor'
 import Control from '../components/Control'
 import { useNavigate, useLocation, useSearchParams  } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
@@ -22,6 +23,8 @@ const Home = () => {
                 return <Control />
             case 'monitor':
                 return <Monitor />
+            case 'report':
+                return <Report />
             default:
                 return <Control />
         }
