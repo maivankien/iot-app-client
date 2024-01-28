@@ -7,11 +7,12 @@ import React, { useState, useEffect } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { showToast, ERROR_CODE } from "../components/Toast"
+import { EnergyYear } from "../components/report/energyYear"
 import MESSAGE_COMMON from "../common/constants/messages/common"
-import { KEY_ENERGY, FONT_SIZE } from "../common/constants/common/common"
 import { getAllDaysInMonth, formatMonthYear } from "../common/helpers/common";
 import { CustomPowerMonth, CustomLabel } from "../components/report/customTooltip"
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { KEY_ENERGY, FONT_SIZE, WITH_CHART, HEIGHT_CHART } from "../common/constants/common/common"
 
 registerLocale('vi', vi);
 
@@ -77,7 +78,7 @@ const Report = () => {
                 <label className="label">Tổng điện năng tiêu thụ trong tháng: {sumEnergy} (KWH)</label>
 
                 <div className="colunm-chart-container">
-                    <ResponsiveContainer width={1200} height={300}>
+                    <ResponsiveContainer width={WITH_CHART} height={HEIGHT_CHART}>
                         <BarChart data={dataChart}>
                             <XAxis dataKey="index" fontSize={FONT_SIZE} />
                             <YAxis unit=" KWH" width={100} fontSize={FONT_SIZE} />
@@ -88,6 +89,7 @@ const Report = () => {
                     </ResponsiveContainer>
                 </div>
             </div>
+            <EnergyYear />
         </div>
     )
 }
