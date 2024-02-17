@@ -30,7 +30,7 @@ h1 {
 .device {
     height: 120px;
     display: flex;
-    margin: 10px; 
+    margin: 10px;
     border-radius: 20px;
     flex-direction: column;
     align-items: center;
@@ -84,4 +84,112 @@ h1 {
 
 .controls .deactive {
     background-color: var(--active-color);
+}
+
+.schedule-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 999;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    width: 500px;
+    min-height: 350px;
+    max-height: 500px;
+    border-radius: 10px;
+}
+
+.schedule-modal .schedule {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: space-between;
+    justify-content: space-between;
+}
+
+.schedule-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.schedule-title h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 26px;
+}
+
+.schedules h3 {
+    margin: auto;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.create-schedule {
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 2px;
+    background-color: teal;
+}
+
+.create-schedule:hover {
+    opacity: 0.8;
+}
+
+.schedule-options {
+    color: #333;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 2px;
+    background-color: #fff;
+}
+
+.close-modal {
+    top: 8px;
+    right: 8px;
+    color: red;
+    border: none;
+    cursor: pointer;
+    font-size: 26px;
+    font-weight: 700;
+    position: absolute;
+    background-color: transparent;
+}
+
+.close-modal:hover {
+    opacity: 0.6;
+}
+
+.schedule-controls {
+    width: 150px;
+    display: flex;
+    margin-top: 8px;
+    justify-content: space-between;
+}
+
+.date-picker {
+    width: 150px;
+}
+
+.delete-schedule {
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 2px;
+    background-color: red;
+}
+
+.delete-schedule:hover {
+    opacity: 0.7;
+}
+
+.list-schedule {
+    margin-top: 30px;
 }

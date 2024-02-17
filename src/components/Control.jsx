@@ -6,7 +6,7 @@ import instance from "../common/api/api"
 import client from "../common/mqtt/connect"
 import { showToast } from "../components/Toast"
 import MESSAGE_COMMON from '../common/constants/messages/common';
-
+import ModalScheduler from './schedule/modalSchedule';
 
 const Control = () => {
     const [devices, setDevices] = useState([])
@@ -51,6 +51,16 @@ const Control = () => {
         setDevices(updatedDevices)
     }
 
+    const [selectedDeviceId, setSelectedDeviceId] = useState(null)
+
+    const handleOpenModal = (deviceId) => {
+        setSelectedDeviceId(deviceId)
+    }
+
+    const handleCloseModal = () => {
+        setSelectedDeviceId(null)
+    }
+
     return (
         <div className="Control">
             <h1>Điều khiển</h1>
@@ -63,6 +73,9 @@ const Control = () => {
                             </IconContext.Provider>
                             <span>{device.name}</span>
                         </div>
+                        <div className="button-modal">
+                            <button onClick={() => handleOpenModal(device.id)}>Hẹn giờ</button>
+                        </div>
                         <div className="controls">
                             <button className={device.state ? "active" : "deactive"} onClick={() => toggleDevice(device.id)}>
                                 {device.state ? "Tắt" : "Bật"}
@@ -71,6 +84,7 @@ const Control = () => {
                     </div>
                 ))}
             </div>
+            <ModalScheduler deviceId={selectedDeviceId} onClose={handleCloseModal} />
         </div>
     );
 }
