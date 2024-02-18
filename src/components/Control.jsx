@@ -71,15 +71,17 @@ const Control = () => {
                             <IconContext.Provider value={{ className: (device.state ? "active" : "deactive") + " icon" }}>
                                 {React.createElement(Icons[device.icon])}
                             </IconContext.Provider>
-                            <span>{device.name}</span>
+                            &nbsp; <span>{device.name}</span>
                         </div>
-                        <div className="button-modal">
-                            <button onClick={() => handleOpenModal(device.id)}>Hẹn giờ</button>
-                        </div>
-                        <div className="controls">
-                            <button className={device.state ? "active" : "deactive"} onClick={() => toggleDevice(device.id)}>
-                                {device.state ? "Tắt" : "Bật"}
-                            </button>
+                        <div className="device-controls">
+                            <div className="controls">
+                                <button className={device.state ? "active" : "deactive"} onClick={() => toggleDevice(device.id)}>
+                                    {device.state ? "Tắt" : "Bật"}
+                                </button>
+                            </div>
+                            <div className="button-modal">
+                                <button onClick={() => handleOpenModal(device.id)}>Hẹn giờ</button>
+                            </div>
                         </div>
                     </div>
                 ))}

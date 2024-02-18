@@ -58,19 +58,15 @@ h1 {
     color: var(--black-color);
 }
 
-.controls {
-    width: 100px;
-}
 
 .controls button {
-    width: 100%;
-    height: 40px;
+    height: 36px;
+    width: 80px;
     border: none;
     color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
     cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
     transition: background-color 0.2s ease;
 }
 
@@ -193,4 +189,27 @@ h1 {
 
 .list-schedule {
     margin-top: 20px;
+}
+
+.button-modal button {
+    width: 80px;
+    height: 36px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    background-color: teal;
+}
+
+.button-modal button:hover {
+    opacity: 0.8;
+}
+
+.device-controls {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
 }
