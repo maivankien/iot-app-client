@@ -106,7 +106,7 @@ h1 {
 
 .schedule-modal .schedule {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     align-items: space-between;
     justify-content: space-between;
 }
@@ -182,6 +182,7 @@ h1 {
     border: none;
     cursor: pointer;
     color: #fff;
+    padding: 4px 8px;
     border-radius: 2px;
     background-color: red;
 }
@@ -191,5 +192,5 @@ h1 {
 }
 
 .list-schedule {
-    margin-top: 30px;
+    margin-top: 20px;
 }

@@ -17,7 +17,7 @@ const ModalSchedule = ({ deviceId, onClose }) => {
     const [action, setAction] = useState(ACTION.ON)
 
     const handleCreateSchedule = async () => {
-        const count = schedules.filter((schedule) => schedule.action == action).length
+        const count = schedules.filter((schedule) => +schedule.action === +action).length
         if (count >= 5) return showToast("error", SCHEDULE_MESSAGE.MAX_SCHEDULE)
 
         if (!date) return showToast("error", SCHEDULE_MESSAGE.DATE_REQUIRED)
@@ -39,6 +39,8 @@ const ModalSchedule = ({ deviceId, onClose }) => {
             console.log(err)
             showToast("error", SCHEDULE_MESSAGE.CREATE_SCHEDULE_FAIL)
         }
+        setDate(undefined)
+        setAction(ACTION.ON)
     }
 
     const handleDeleteSchedule = async (id) => {
