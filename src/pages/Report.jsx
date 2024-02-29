@@ -6,7 +6,7 @@ import instance from '../common/api/api';
 import React, { useState, useEffect } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker, { registerLocale } from 'react-datepicker';
-import { showToast, ERROR_CODE } from "../components/Toast"
+import { showToast, MESSAGE_CODE } from "../components/Toast"
 import { EnergyYear } from "../components/report/energyYear"
 import MESSAGE_COMMON from "../common/constants/messages/common"
 import { getAllDaysInMonth, formatMonthYear } from "../common/helpers/common";
@@ -37,7 +37,7 @@ const Report = () => {
                         dateEnd: allDayinMonth[allDayinMonth.length - 1],
                     }
                 })
-                if (!data || data.length === 0) return showToast(ERROR_CODE.ERROR, MESSAGE_COMMON.NOT_FOUND)
+                if (!data || data.length === 0) return showToast(MESSAGE_CODE.ERROR, MESSAGE_COMMON.NOT_FOUND)
 
                 const newEnergy = data.reduce((sum, entry) => sum + entry.value, 0)
                 setSumEnergy((newEnergy / 1000).toFixed(2))
@@ -56,7 +56,7 @@ const Report = () => {
                 setDataChart(mergedData)
             } catch (err) {
                 console.log(err)
-                return showToast(ERROR_CODE.ERROR, MESSAGE_COMMON.ERROR_DEFAULT)
+                return showToast(MESSAGE_CODE.ERROR, MESSAGE_COMMON.ERROR_DEFAULT)
             }
         }
         fetchData()

@@ -4,7 +4,8 @@ import client from "../common/mqtt/connect"
 import MQTT_TOPIC from "../common/constants/dict/topic"
 import CustomTooltipPower from "../components/monitor/customTooltipPower"
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from 'recharts';
-
+import { showToast, MESSAGE_CODE } from "../components/Toast"
+import MESSAGE_COMMON from "../common/constants/messages/common";
 
 const Monitor = () => {
     document.title = 'Monitor'
@@ -20,7 +21,11 @@ const Monitor = () => {
     }
     const handleMessage = (topic, message) => {
         if (topic === MQTT_TOPIC.HOME_DATA) {
-            handleData(JSON.parse(message))
+            const data = JSON.parse(message)
+            if (data.voltage === null) {
+                showToast(MESSAGE_CODE.ERROR, MESSAGE_COMMON.ERROR_GET_MONITOR_DATA, 1000)
+            }
+            handleData(data)
         }
     }
     
