@@ -11,3 +11,22 @@ export const ACTION = {
     ON: 1,
     OFF: 0
 }
+export const TYPE_ENERGY = {
+    DAY: "Ngày"
+}
+
+export const BASE_DATA = {
+    "KIMUA_CSPK": "20",
+    "LOAI_DDO": "1",
+    "SO_HO": 1,
+    "MA_CAPDAP": "1",
+    "NGAY_DGIA": "01/01/1900",
+    "HDG_BBAN_APGIA": [
+        {
+            "LOAI_BCS": "KT",
+            "TGIAN_BANDIEN": "KT",
+            "MA_NHOMNN": "SHBT",
+            "MA_NGIA": "A"
+        }
+    ]
+}

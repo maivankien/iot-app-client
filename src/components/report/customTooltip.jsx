@@ -1,15 +1,26 @@
-import { KEY_ENERGY } from "../../common/constants/common/common"
+import { ElectricityBill } from "./electricityBill"
+import { getStartAndEndDates } from "../../common/helpers/common"
+import { KEY_ENERGY, TYPE_ENERGY } from "../../common/constants/common/common"
 
-export const CustomPowerMonth = ({ active, payload, type = "Ngày" }) => {
+export const CustomPowerMonth = ({ active, payload, type = TYPE_ENERGY.DAY }) => {
     if (active && payload && payload.length) {
-        const value = payload[0].payload[KEY_ENERGY]
-        const { date, isNull } = payload[0].payload
+        const data = payload[0].payload
+        const value = data[KEY_ENERGY]
+        const { date, isNull } = data
+
+        const timeString = getStartAndEndDates(date)
+        
         return (
             <div className="custom-tooltip">
                 <div className="item-tooltip">
                     {type}:
                     <span className="item-tooltip-value">{date}</span>
                 </div>
+                {
+                    (isNull || type == TYPE_ENERGY.DAY) ? null : (
+                        <ElectricityBill value={value} dateStart={timeString.dateStart} dateEnd={timeString.dateEnd} />
+                    )
+                }
                 {isNull ? (
                     <div className="item-tooltip">Không có dữ liệu</div>
                 ) : (

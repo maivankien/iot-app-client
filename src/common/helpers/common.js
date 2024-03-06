@@ -15,3 +15,21 @@ export const getAllDaysInMonth = (inputString) => {
 export const formatMonthYear = (inputString) => {
     return moment(inputString).format('MM/yyyy')
 }
+
+
+export const getStartAndEndDates = (timeString) => {
+    const parts = timeString.split('/')
+    const year = parseInt(parts[1], 10)
+    const month = parseInt(parts[0], 10) - 1
+
+    const firstDayOfMonth = new Date(year, month, 1)
+    const lastDayOfMonth = new Date(year, month + 1, 0)
+
+    const startDate = ("0" + (firstDayOfMonth.getDate())).slice(-2) + "/" + ("0" + (firstDayOfMonth.getMonth() + 1)).slice(-2) + "/" + firstDayOfMonth.getFullYear()
+    const endDate = ("0" + (lastDayOfMonth.getDate())).slice(-2) + "/" + ("0" + (lastDayOfMonth.getMonth() + 1)).slice(-2) + "/" + lastDayOfMonth.getFullYear()
+
+    return {
+        dateStart: startDate,
+        dateEnd: endDate
+    }
+}
