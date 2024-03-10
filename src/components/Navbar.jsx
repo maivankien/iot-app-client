@@ -29,13 +29,13 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div className="links">
-                            <Link className={`link`} to="/">
+                            <Link className={`link ${location.pathname === '/' && location.search === "" ? 'active' : ''}`} to="/">
                                 <h6>Home</h6>
                             </Link>
-                            <Link className={`link`} to="?page=monitor">
+                            <Link className={`link ${location.search === '?page=monitor' ? 'active' : ''}`} to="?page=monitor">
                                 <h6>Theo dõi</h6>
                             </Link>
-                            <Link className={`link`} to="?page=report">
+                            <Link className={`link ${location.search === '?page=report' ? 'active' : ''}`} to="?page=report">
                                 <h6>Báo cáo</h6>
                             </Link>
                         </div>

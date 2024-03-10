@@ -29,11 +29,11 @@ const Login = () => {
         e.preventDefault()
         try {
             await login(inputs)
-            const continute = searchParams.get("continue")
             const state = { isAuthenticated: true }
-            if (continute) {
-                return navigate(continute, { state })
-            }
+            // const continute = searchParams.get("continue")
+            // if (continute) {
+                // return navigate(continute, { state })
+            // }
             navigate("/", { state })
         } catch (err) {
             const { status, data } = err.response

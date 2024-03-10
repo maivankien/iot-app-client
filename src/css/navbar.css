@@ -53,6 +53,10 @@
     background-color: #4b9ab5;
 }
 
+.app .container .navbar .active {
+    background-color: #4b9ab5;
+}
+
 .app .container .navbar .container .logout {
     font-size: 20px;
 }

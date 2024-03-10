@@ -8,8 +8,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { showToast, MESSAGE_CODE } from "../components/Toast"
 import { EnergyYear } from "../components/report/energyYear"
+import { ElectricityBill } from "../components/report/electricityBill"
 import MESSAGE_COMMON from "../common/constants/messages/common"
-import { getAllDaysInMonth, formatMonthYear } from "../common/helpers/common";
+import { getAllDaysInMonth, formatMonthYear, getFirstAndLastDayOfMonth } from "../common/helpers/common";
 import { CustomPowerMonth, CustomLabel } from "../components/report/customTooltip"
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { KEY_ENERGY, FONT_SIZE, WITH_CHART, HEIGHT_CHART } from "../common/constants/common/common"
@@ -22,6 +23,7 @@ const Report = () => {
     const [sumEnergy, setSumEnergy] = useState(0)
     const [dataChart, setDataChart] = useState([])
     const [selectedMonth, setSelectedMonth] = useState(new Date())
+    const [timeString, setTimeString] = useState(getFirstAndLastDayOfMonth(selectedMonth))
 
     const handleChange = (input) => setSelectedMonth(input)
 
@@ -62,6 +64,11 @@ const Report = () => {
         fetchData()
     }, [selectedMonth])
 
+    useEffect(() => {
+        setTimeString(getFirstAndLastDayOfMonth(selectedMonth))
+    }, [selectedMonth, sumEnergy])
+
+
     return (
         <div className="Report margin-header">
             <div className="report-colunm-chart">
@@ -75,6 +82,8 @@ const Report = () => {
                         locale="vi"
                     />
                 </div>
+                <ElectricityBill value={sumEnergy} dateStart={timeString.firstDay} dateEnd={timeString.lastDay} />
+
                 <label className="label">Tổng điện năng tiêu thụ trong tháng: {sumEnergy} (KWH)</label>
 
                 <div className="colunm-chart-container">

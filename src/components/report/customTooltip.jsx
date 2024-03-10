@@ -17,7 +17,7 @@ export const CustomPowerMonth = ({ active, payload, type = TYPE_ENERGY.DAY }) =>
                     <span className="item-tooltip-value">{date}</span>
                 </div>
                 {
-                    (isNull || type == TYPE_ENERGY.DAY) ? null : (
+                    (isNull || type === TYPE_ENERGY.DAY) ? null : (
                         <ElectricityBill value={value} dateStart={timeString.dateStart} dateEnd={timeString.dateEnd} />
                     )
                 }

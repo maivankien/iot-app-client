@@ -33,3 +33,16 @@ export const getStartAndEndDates = (timeString) => {
         dateEnd: endDate
     }
 }
+
+export const getFirstAndLastDayOfMonth = (date) => {
+    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1)
+    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0)
+
+    const formattedFirstDay = ("0" + firstDay.getDate()).slice(-2) + "/" + ("0" + (firstDay.getMonth() + 1)).slice(-2) + "/" + firstDay.getFullYear()
+    const formattedLastDay = ("0" + lastDay.getDate()).slice(-2) + "/" + ("0" + (lastDay.getMonth() + 1)).slice(-2) + "/" + lastDay.getFullYear()
+
+    return {
+        firstDay: formattedFirstDay,
+        lastDay: formattedLastDay
+    }
+}
