@@ -31,7 +31,7 @@ export const ElectricityBill = ({ value, dateStart, dateEnd }) => {
                 })
                 .catch((error) => showToast("Lỗi tính tiền điện."))
         }
-    }, [total])
+    }, [total, dateStart, dateEnd])
 
     return (
         <div className="electricity-bill item-tooltip">

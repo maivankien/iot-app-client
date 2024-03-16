@@ -33,14 +33,15 @@ const ModalSchedule = ({ deviceId, onClose }) => {
                 id: res.data.jobId,
                 time: new Date(date).getTime(),
             }
-            setSchedules([schedule, ...schedules])
+            const newSchedules = [...schedules, schedule]
+            newSchedules.sort((a, b) => a.time - b.time)
+
+            setSchedules(newSchedules)
             showToast("success", SCHEDULE_MESSAGE.CREATE_SCHEDULE_SUCCESS)
         } catch (err) {
             console.log(err)
             showToast("error", SCHEDULE_MESSAGE.CREATE_SCHEDULE_FAIL)
         }
-        setDate(undefined)
-        setAction(ACTION.ON)
     }
 
     const handleDeleteSchedule = async (id) => {
@@ -91,7 +92,7 @@ const ModalSchedule = ({ deviceId, onClose }) => {
                         onChange={(date) => setDate(date)}
                     />
                     <div className="schedule-controls">
-                        <select className="schedule-options" onChange={(e) => setAction(Number(e.target.value))}>
+                        <select className="schedule-options" onChange={(e) => setAction(Number(e.target.value))} value={action}>
                             <option value={ACTION.ON}>Bật</option>
                             <option value={ACTION.OFF}>Tắt</option>
                         </select>

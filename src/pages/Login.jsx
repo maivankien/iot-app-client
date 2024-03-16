@@ -30,10 +30,10 @@ const Login = () => {
         try {
             await login(inputs)
             const state = { isAuthenticated: true }
-            // const continute = searchParams.get("continue")
-            // if (continute) {
-                // return navigate(continute, { state })
-            // }
+            const continute = searchParams.get("continue")
+            if (continute) {
+                return navigate(continute, { state })
+            }
             navigate("/", { state })
         } catch (err) {
             const { status, data } = err.response
