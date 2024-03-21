@@ -6,10 +6,8 @@ import Logo from "../common/constants/images/logo.png"
 
 const Navbar = () => {
     const location = useLocation()
-    const { state } = location
     const navigate = useNavigate()
-    const { setCurrentUser, isAuthenticated, setIsAuthenticated } = useContext(AuthContext)
-    const isAuth = state?.isAuthenticated ? state.isAuthenticated : isAuthenticated
+    const { setCurrentUser, setIsAuthenticated } = useContext(AuthContext)
 
 
     const logout = () => {
@@ -20,33 +18,31 @@ const Navbar = () => {
 
     return (
         <div>
-            {isAuth ? (
-                <div className="navbar">
-                    <div className="container">
-                        <div className="logo">
-                            <Link to="/">
-                                <img src={Logo} alt="Logo" />
-                            </Link>
-                        </div>
-                        <div className="links">
-                            <Link className={`link ${location.pathname === '/' && location.search === "" ? 'active' : ''}`} to="/">
-                                <h6>Home</h6>
-                            </Link>
-                            <Link className={`link ${location.search === '?page=monitor' ? 'active' : ''}`} to="?page=monitor">
-                                <h6>Theo dõi</h6>
-                            </Link>
-                            <Link className={`link ${location.search === '?page=report' ? 'active' : ''}`} to="?page=report">
-                                <h6>Báo cáo</h6>
-                            </Link>
-                        </div>
-                        <span className="logout" onClick={logout}>
-                            Đăng xuất
-                        </span>
+            <div className="navbar">
+                <div className="container">
+                    <div className="logo">
+                        <Link to="/">
+                            <img src={Logo} alt="Logo" />
+                        </Link>
                     </div>
+                    <div className="links">
+                        <Link className={`link ${location.pathname === '/' && location.search === "" ? 'active' : ''}`} to="/">
+                            <h6>Home</h6>
+                        </Link>
+                        <Link className={`link ${location.search === '?page=monitor' ? 'active' : ''}`} to="?page=monitor">
+                            <h6>Theo dõi</h6>
+                        </Link>
+                        <Link className={`link ${location.search === '?page=report' ? 'active' : ''}`} to="?page=report">
+                            <h6>Báo cáo</h6>
+                        </Link>
+                    </div>
+                    <span className="logout" onClick={logout}>
+                        Đăng xuất
+                    </span>
                 </div>
-            ) : ''}
+            </div>
         </div>
-    );
+    )
 }
 
 export default Navbar

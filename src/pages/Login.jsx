@@ -32,9 +32,11 @@ const Login = () => {
             const state = { isAuthenticated: true }
             const continute = searchParams.get("continue")
             if (continute) {
-                return navigate(continute, { state })
+                navigate(continute, { state })
+            } else {
+                navigate("/", { state })
             }
-            navigate("/", { state })
+            window.location.reload()
         } catch (err) {
             const { status, data } = err.response
             const message = MESSAGE_AUTH[status] || data.message
