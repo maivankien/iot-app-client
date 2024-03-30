@@ -1,7 +1,7 @@
 import "../css/auth.css"
 import { useContext } from "react"
 import React, { useEffect, useState } from "react"
-import { Link, useNavigate, useSearchParams } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 import { AuthContext } from "../common/context/authContext"
 import MESSAGE_AUTH from "../common/constants/messages/auth"
 import { showToast } from "../components/Toast"
@@ -16,7 +16,6 @@ const Login = () => {
         password: "",
     })
 
-    const navigate = useNavigate()
     const { login } = useContext(AuthContext)
 
     const [searchParams] = useSearchParams()
@@ -29,14 +28,9 @@ const Login = () => {
         e.preventDefault()
         try {
             await login(inputs)
-            const state = { isAuthenticated: true }
             const continute = searchParams.get("continue")
-            if (continute) {
-                navigate(continute, { state })
-            } else {
-                navigate("/", { state })
-            }
-            window.location.reload()
+
+            return window.location.assign(continute || "/")
         } catch (err) {
             const { status, data } = err.response
             const message = MESSAGE_AUTH[status] || data.message

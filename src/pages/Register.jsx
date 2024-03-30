@@ -29,7 +29,7 @@ const Register = () => {
         }
         try {
             await instance.post("/user/register", inputs)
-            navigate("/login")
+            window.location.assign("/login")
         } catch (err) {
             const { status, data } = err.response
             const message = MESSAGE_AUTH[status] || data.message
