@@ -8,13 +8,15 @@ import { showToast, MESSAGE_CODE } from "../components/Toast"
 import MESSAGE_COMMON from "../common/constants/messages/common";
 
 const Monitor = () => {
+    const lenghtMonitor = 60
+
     document.title = 'Monitor'
-    const [data, setData] = useState([])
+    const [data, setData] = useState(Array.from({ length: lenghtMonitor }, () => ({})))
 
     const handleData = (message) => {
         message.time = new Date().toLocaleTimeString()
         const newData = [...data, message]
-        if (newData.length > 60) {
+        if (newData.length > lenghtMonitor) {
             newData.shift()
         }
         setData(newData)
@@ -28,10 +30,10 @@ const Monitor = () => {
             handleData(data)
         }
     }
-    
+
     useEffect(() => {
         client.on('message', handleMessage)
-        
+
         return () => {
             client.off('message', handleMessage)
         }
