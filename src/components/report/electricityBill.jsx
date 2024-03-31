@@ -5,13 +5,15 @@ import { BASE_DATA } from "../../common/constants/common/common"
 
 
 export const ElectricityBill = ({ value, dateStart, dateEnd }) => {
+    const pending = "Đang tính..."
     const [total, setTotal] = useState(null)
-    const [powerData, setPowerData] = useState(0)
+    const [powerData, setPowerData] = useState(pending)
 
     if (value !== total) setTotal(value)
 
     useEffect(() => {
         if (total > 0) {
+            setPowerData(pending)
             const dataSend = {
                 ...BASE_DATA,
                 NGAY_DKY: dateStart,
@@ -35,8 +37,8 @@ export const ElectricityBill = ({ value, dateStart, dateEnd }) => {
 
     return (
         <div className="electricity-bill item-tooltip">
-            Tiền điện: 
-            <span className="item-tooltip-value"> {powerData.toLocaleString('vi-VN')} đ</span>
+            Tiền điện:
+            <span className="item-tooltip-value"> {powerData.toLocaleString('vi-VN')} {typeof (powerData) !== 'string' ? "đ" : ""}</span>
         </div>
     )
 }
