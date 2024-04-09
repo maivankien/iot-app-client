@@ -28,7 +28,7 @@ export const ElectricityBill = ({ value, dateStart, dateEnd }) => {
             }
             axios.post('https://calc.evn.com.vn/TinhHoaDon/api/Calculate', dataSend)
                 .then(data => {
-                    const result = data.data.Data.HDN_HDON[0].SO_TIEN
+                    const result = data.data.Data.HDN_HDON[0].TONG_TIEN
                     setPowerData(result)
                 })
                 .catch((error) => showToast("Lỗi tính tiền điện."))

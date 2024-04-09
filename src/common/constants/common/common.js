@@ -16,7 +16,7 @@ export const TYPE_ENERGY = {
 }
 
 export const BASE_DATA = {
-    "KIMUA_CSPK": "20",
+    "KIMUA_CSPK": "0",
     "LOAI_DDO": "1",
     "SO_HO": 1,
     "MA_CAPDAP": "1",
