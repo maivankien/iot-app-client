@@ -8,7 +8,9 @@ export const MESSAGE_CODE = {
     WARNING: "warning"
 }
 
-export const showToast = (type, message, time = 3000) => {
+const TIME_SHOW_TOAST = 2000
+
+export const showToast = (type, message, time = TIME_SHOW_TOAST) => {
     switch (type) {
         case MESSAGE_CODE.SUCESS:
             toast.success(message, {

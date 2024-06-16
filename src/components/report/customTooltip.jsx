@@ -44,7 +44,7 @@ export const CustomLabel = ({ viewBox, value }) => {
     return (
         value === 0 ? null :
             <text x={barCenterX} y={y} dy={-5} fill="#666" textAnchor="middle">
-                {Number.isInteger(value) ? value : value.toFixed(2)}
+                {Number.isInteger(value) ? value : value.toFixed(1)}
             </text>
     )
 }
